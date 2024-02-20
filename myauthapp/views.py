@@ -19,8 +19,10 @@ def signup(request):
         user.save()
         print(user.date_joined)
         token = Token.objects.create(user=user)
+        print('amino')
         return Response({"token":token.key,"user":serializer.data})
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['POST'])
 def login(request):
