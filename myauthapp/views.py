@@ -18,8 +18,10 @@ def signup(request):
         user.set_password(password)
         user.save()
         token = Token.objects.create(user=user)
+        print('amino')
         return Response({"token":token.key,"user":serializer.data})
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['POST'])
 def login(request):
